@@ -1,4 +1,4 @@
-MRuby::Gem::Specification.new('mruby-cross-compile-for-mac-osx') do |spec|
+MRuby::Gem::Specification.new('mruby-cross-compile-on-mac-osx') do |spec|
   spec.license = 'MIT'
   spec.authors = 'MATSUMOTO Ryosuke'
   spec.version = '0.0.1'
