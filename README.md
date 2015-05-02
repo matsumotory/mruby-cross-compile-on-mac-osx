@@ -9,7 +9,7 @@ MRuby::Build.new do |conf|
   # ... (snip) ...
 
   # the last line of conf.gem
-  conf.gem :githun => 'matsumoto-r/mruby-cross-compile-on-mac-osx'
+  conf.gem :github => 'matsumoto-r/mruby-cross-compile-on-mac-osx'
 end
 ```
 
