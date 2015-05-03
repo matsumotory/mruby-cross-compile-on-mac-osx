@@ -14,7 +14,7 @@ MRuby::Build.new do |conf|
   # ... (snip) ...
 
   # the last line of conf.gem
-  load '/path/to/mruby-cross-compile-on-mac-osx'
+  load '/path/to/mruby-cross-compile-on-mac-osx/mrbgem.rake'
 end
 ```
 
