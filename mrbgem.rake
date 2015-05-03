@@ -25,8 +25,13 @@ if ENV['MRUBY_CROSS_OS'] == "linux"
     toolchain :gcc
 
     url = 'http://crossgcc.rts-software.org/doku.php?id=compiling_for_linux'
+    # for x86_64
     cgcc = "/usr/local/gcc-4.8.1-for-linux64/bin/x86_64-pc-linux-gcc"
     car = "/usr/local/gcc-4.8.1-for-linux64/bin/x86_64-pc-linux-ar"
+    if ENV['MRUBY_CROSS_ARCH'] == "386"
+      cgcc = "/usr/local/gcc-4.8.1-for-linux32/bin/i586-pc-linux-gcc"
+      car = "/usr/local/gcc-4.8.1-for-linux32/bin/i586-pc-linux-ar"
+    end
 
     fail "Can't find #{cgcc}. Please download compiler from #{url}" unless File.exist? cgcc
     fail "Can't find #{car}. Please download compiler from #{url}" unless File.exist? car
