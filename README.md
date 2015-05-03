@@ -1,7 +1,12 @@
 # Cross Compile on Mac OSX for mruby
 Cross compile osx, linux or win32 binary of mruby on Mac OSX.
 
-## install by mrbgems
+## Donwload and install by mrbgems
+### Donwload mrbgem
+```
+git clone https://github.com/matsumoto-r/mruby-cross-compile-on-mac-osx.git
+```
+
 ### add conf.gem line to `build_config.rb`
 ```ruby
 MRuby::Build.new do |conf|
@@ -9,7 +14,7 @@ MRuby::Build.new do |conf|
   # ... (snip) ...
 
   # the last line of conf.gem
-  conf.gem :github => 'matsumoto-r/mruby-cross-compile-on-mac-osx'
+  load '/path/to/mruby-cross-compile-on-mac-osx'
 end
 ```
 
