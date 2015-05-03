@@ -5,25 +5,14 @@ MRuby::Gem::Specification.new('mruby-cross-compile-on-mac-osx') do |spec|
   spec.summary = 'Cross compiled osx, linux, or win32 binary on Max OSX'
 end
 
-# get mrbgems from build_config.rb
-def get_mrbgems
-  mrbgems = []
-  MRuby.each_target do |target|
-    @gems.map do |gem|
-      mrbgems << gem.dir
-    end
-  end
-  mrbgems
-end
-
 # for OSX
 if ENV['MRUBY_CROSS_OS'] == "osx"
   MRuby::CrossBuild.new('osx') do |conf|
 
     toolchain :gcc
 
-    get_mrbgems.each do |mrbgem|
-      conf.gem mrbgem
+    MRuby.targets["host"].gems.each do |mrbgem|
+      conf.gem mrbgem.dir
     end
 
   end
@@ -42,8 +31,8 @@ if ENV['MRUBY_CROSS_OS'] == "linux"
     fail "Can't find #{cgcc}. Please download compiler from #{url}" unless File.exist? cgcc
     fail "Can't find #{car}. Please download compiler from #{url}" unless File.exist? car
 
-    get_mrbgems.each do |mrbgem|
-      conf.gem mrbgem
+    MRuby.targets["host"].gems.each do |mrbgem|
+      conf.gem mrbgem.dir
     end
 
     conf.cc.command = cgcc
@@ -67,8 +56,8 @@ if ENV['MRUBY_CROSS_OS'] == "win32"
     fail "Can't find #{cgcc}. Please download compiler from #{url}" unless File.exist? cgcc
     fail "Can't find #{car}. Please download compiler from #{url}" unless File.exist? car
 
-    get_mrbgems.each do |mrbgem|
-      conf.gem mrbgem
+    MRuby.targets["host"].gems.each do |mrbgem|
+      conf.gem mrbgem.dir
     end
 
     conf.cc.command = cgcc
@@ -78,4 +67,3 @@ if ENV['MRUBY_CROSS_OS'] == "win32"
 
   end
 end
-
