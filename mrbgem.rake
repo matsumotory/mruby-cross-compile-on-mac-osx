@@ -56,19 +56,11 @@ if ENV['MRUBY_CROSS_OS'] == "win32"
   end
 end
 
-namespace :cross do
-  def prepare_crosscompile
-    conf = MRuby.targets[ENV["MRUBY_CROSS_OS"]]
-    MRuby.targets["host"].gems.each do |gem|
-      conf.gems << gem
-    end
+desc "run all task with crosscompile"
+task :crosscompile do
+  conf = MRuby.targets[ENV["MRUBY_CROSS_OS"]]
+  MRuby.targets["host"].gems.each do |gem|
+    conf.gems << gem
   end
-
-  %w(all test).each do |t|
-    desc "run #{t} task with crosscompile"
-    task t.to_sym do
-      prepare_crosscompile
-      Rake::Task[t].invoke
-    end
-  end
+  Rake::Task["all"].invoke
 end
