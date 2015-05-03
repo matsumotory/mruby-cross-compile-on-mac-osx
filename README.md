@@ -20,15 +20,15 @@ end
 ### Cross Compile with MRUBY_CROSS_OS Env
 #### for linux
 ```
-rake MRUBY_CROSS_OS=linux
+rake crosscompile MRUBY_CROSS_OS=linux
 ```
 #### for osx
 ```
-rake MRUBY_CROSS_OS=osx
+rake crosscompile MRUBY_CROSS_OS=osx
 ```
 #### for win32
 ```
-rake MRUBY_CROSS_OS=win32
+rake crosscompile MRUBY_CROSS_OS=win32
 ```
 
 then, generate mruby binaries into `mruby/build/{linux,osx,win32}/`
@@ -38,4 +38,3 @@ then, generate mruby binaries into `mruby/build/{linux,osx,win32}/`
 under the MIT License:
 
 * http://www.opensource.org/licenses/mit-license.php
-
